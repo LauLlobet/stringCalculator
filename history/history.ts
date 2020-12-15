@@ -29,6 +29,7 @@ describe('calculator should', () => {
     })
     it('reject negatives', () => {
         assert.throws(()=> calculator("1,2,-30,2,1"), Error, "negatives -30 found")
+        assert.throws(()=> calculator("1,2,-30,2,-1"), Error, "negatives -30 -1 found")
     })
 });
 
