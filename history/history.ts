@@ -34,7 +34,8 @@ export function calculator(str : string): number {
     if(isInvalidlySeparated(str)){ 
          throw new Error('not well separated');
     }
-    const commaSeparatedString = str.replace("//d\n","").replace(new RegExp("d",'g'),',')
+    const separator = "d"
+    const commaSeparatedString = str.replace("//"+separator+"\n","").replace(new RegExp(separator,'g'),',')
     return commaSeparatedString
     .split(',')
     .reduce((accum,current) => accum + +current, 0)
