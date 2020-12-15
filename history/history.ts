@@ -41,11 +41,10 @@ function separateWithCommas(str: string): string {
 }
 
 export function calculator(string : string): number {
-    if(isInvalidlySeparated(string)){ 
-         throw new Error('not well separated');
-    }
     const commaSeparatedString = separateWithCommas(string)
-    
+    if(isInvalidlySeparated(commaSeparatedString)){ 
+        throw new Error('not well separated');
+    }
     return commaSeparatedString.split(',')
     .reduce((accum,current) => accum + +current, 0)
 }
