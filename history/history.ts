@@ -35,7 +35,7 @@ export function calculator(str : string): number {
     if(isInvalidlySeparated(str)){ 
          throw new Error('not well separated');
     }
-    const separator = "d"
+    const separator = str.split("\n")[0].split("//")[1]
     const commaSeparatedString = str.replace("//"+separator+"\n","").replace(new RegExp(separator,'g'),',')
     return commaSeparatedString
     .split(',')
