@@ -28,6 +28,6 @@ describe('calculator should', () => {
         assert.throws(()=> calculator("//d\n1d2dd3"))
     })
     it('reject negatives', () => {
-        assert.throws(()=> calculator("1,2,-3,2,1"), Error, "negatives -3 found")
+        assert.throws(()=> calculator("1,2,-30,2,1"), Error, "negatives -30 found")
     })
 });
