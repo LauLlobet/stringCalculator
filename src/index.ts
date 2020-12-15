@@ -1,3 +1,3 @@
-export function sum(str : string): number {
+export function calculator(str : string): number {
     return 4;
 }
