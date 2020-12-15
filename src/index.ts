@@ -2,8 +2,9 @@ export function calculator(string : string): number {
     const commaSeparatedString = separateWithCommas(string)
     throwIfisInvalidlySeparated(commaSeparatedString)
     throwIfNegatives(commaSeparatedString)  
-    return commaSeparatedString.split(',')
-    .reduce((accum,current) => accum + +current, 0)
+    return commaSeparatedString
+                .split(',')
+                .reduce((accum,current) => accum + +current, 0)
 }
 
 function separateWithCommas(str: string): string {
