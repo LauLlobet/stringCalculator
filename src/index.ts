@@ -1,3 +1,3 @@
 export function calculator(str : string): number {
-    return 4;
+    return str.split(',').reduce( (accum,current) => accum + +current, 0)
 }
