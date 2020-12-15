@@ -3,6 +3,9 @@ function isInvalidlySeparated(str: string): boolean {
 }
 
 function separateWithCommas(str: string): string {
+    if(!str.startsWith("//")){
+        return str;
+    }
     const separator = str.split("\n")[0].split("//")[1]
     return str.replace("//"+separator+"\n","").replace(new RegExp(separator,'g'),',')
 }
