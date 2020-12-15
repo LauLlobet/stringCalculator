@@ -13,7 +13,8 @@ function separateWithCommas(str: string): string {
 export function calculator(string : string): number {
     const commaSeparatedString = separateWithCommas(string)
     if(commaSeparatedString.includes("-")){
-        const negative = "-" + string.split("-")[1].split(",")[0]
+        const stringWithoutNonNegatives = string.slice(commaSeparatedString.indexOf('-')+1)
+        const negative = "-" + stringWithoutNonNegatives.split("-")[0].split(",")[0]
         throw new Error("negatives "+ negative + " found")
     }
     if(isInvalidlySeparated(commaSeparatedString)){ 
