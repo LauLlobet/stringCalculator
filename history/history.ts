@@ -21,9 +21,12 @@ describe('calculator should', () => {
 
 //-------- IMPLEMENTATION --------
 
+function isInvalidlySeparated(str: string): boolean {
+    return str.endsWith(',') || str.includes(",,") || str.startsWith(",")
+}
 export function calculator(str : string): number {
-    if(str.endsWith(',') || str.includes(",,") || str.startsWith(",")){
-        throw new Error('not well separated');
+    if(isInvalidlySeparated(str)){ 
+         throw new Error('not well separated');
     }
     return str
     .split(',')
