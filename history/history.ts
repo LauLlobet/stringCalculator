@@ -9,6 +9,9 @@ describe('calculator should', () => {
     it('empty string is zero'), () => {
         expect(calculator("")).eql(0);
     }
+    it('sum an indefinate number of numbers'), () => {
+        expect(calculator("1,2,3,4,5,6,7,8,9")).eql(45)
+    }
 });
 
 //-------- IMPLEMENTATION --------
