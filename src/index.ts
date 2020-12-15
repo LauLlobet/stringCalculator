@@ -5,7 +5,8 @@ export function calculator(str : string): number {
     if(isInvalidlySeparated(str)){ 
          throw new Error('not well separated');
     }
-    return str
-    .split(',')
+    const str2 = str.replace("//d\n","")
+    return str2
+    .split('d')
     .reduce((accum,current) => accum + +current, 0)
 }
