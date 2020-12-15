@@ -27,4 +27,7 @@ describe('calculator should', () => {
     it('reject bad non comma separators', () => {
         assert.throws(()=> calculator("//d\n1d2dd3"))
     })
+    it('reject negatives', () => {
+        assert.throws(()=> calculator("1,2,-3,2,-1"), Error, "negatives found")
+    })
 });
