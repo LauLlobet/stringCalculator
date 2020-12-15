@@ -1,5 +1,9 @@
-function isInvalidlySeparated(str: string): boolean {
-    return str.endsWith(',') || str.includes(",,") || str.startsWith(",")
+export function calculator(string : string): number {
+    const commaSeparatedString = separateWithCommas(string)
+    throwIfisInvalidlySeparated(commaSeparatedString)
+    throwIfNegatives(commaSeparatedString)  
+    return commaSeparatedString.split(',')
+    .reduce((accum,current) => accum + +current, 0)
 }
 
 function separateWithCommas(str: string): string {
@@ -10,16 +14,16 @@ function separateWithCommas(str: string): string {
     return str.replace("//"+separator+"\n","").replace(new RegExp(separator,'g'),',')
 }
 
-export function calculator(string : string): number {
-    const commaSeparatedString = separateWithCommas(string)
+function throwIfisInvalidlySeparated(commaSeparatedString: string) {
+    if(commaSeparatedString.endsWith(',') || commaSeparatedString.includes(",,") || commaSeparatedString.startsWith(",")){ 
+        throw new Error('not well separated');
+    }
+}
+
+function throwIfNegatives(commaSeparatedString: string) {
     if(commaSeparatedString.includes("-")){
-        const stringWithoutNonNegatives = string.slice(commaSeparatedString.indexOf('-')+1)
+        const stringWithoutNonNegatives = commaSeparatedString.slice(commaSeparatedString.indexOf('-')+1)
         const negative = stringWithoutNonNegatives.split("-").reduce((accum, current)=> accum + " -" + current.split(",")[0], "")
         throw new Error("negatives"+ negative + " found")
     }
-    if(isInvalidlySeparated(commaSeparatedString)){ 
-        throw new Error('not well separated');
-    }
-    return commaSeparatedString.split(',')
-    .reduce((accum,current) => accum + +current, 0)
 }
