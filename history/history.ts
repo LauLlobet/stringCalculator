@@ -20,6 +20,9 @@ describe('calculator should', () => {
     it('ignore jumplines',() => {
         expect(calculator("\n\n1,\n\n3,2\n\n")).eql(6)
     })
+    it('accept changing the delimiter character',() => {
+        expect(calculator("//d\n1d2d1")).eql(4)
+    })
 });
 
 //-------- IMPLEMENTATION --------
