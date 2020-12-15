@@ -24,4 +24,7 @@ describe('calculator should', () => {
         expect(calculator("//d\n1d2d1")).eql(4)
         expect(calculator("//q\n1q2q1")).eql(4)
     })
+    it('reject bad non comma separators', () => {
+        assert.throws(()=> calculator("//d\n1d2dd3"))
+    })
 });
