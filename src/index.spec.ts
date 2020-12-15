@@ -13,8 +13,8 @@ describe('calculator should', () => {
         expect(calculator("1,2,3,4,5,6,7,8,9")).eql(45);
     });
     it('shall not accept empty elements', () => {
-        assert.throws(() => calculator("1,"), Error, "missing number or extra separator");
-        assert.throws(() => calculator("1,2,,1"), Error, "missing number or extra separator");
-        assert.throws(() => calculator(",1,2,3"), Error, "missing number or extra separator")
+        assert.throws(() => calculator("1,"), Error, "not well separated");
+        assert.throws(() => calculator("1,2,,1"), Error, "not well separated");
+        assert.throws(() => calculator(",1,2,3"), Error, "not well separated")
     });
 });

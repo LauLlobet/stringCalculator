@@ -1,6 +1,6 @@
 export function calculator(str : string): number {
     if(str.endsWith(',') || str.includes(",,") || str.startsWith(",")){
-        throw new Error('missing number or extra separator');
+        throw new Error('not well separated');
     }
     return str
     .split(',')
