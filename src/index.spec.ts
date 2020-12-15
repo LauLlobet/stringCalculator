@@ -22,5 +22,6 @@ describe('calculator should', () => {
     })
     it('accept changing the delimiter character',() => {
         expect(calculator("//d\n1d2d1")).eql(4)
+        expect(calculator("//q\n1q2q1")).eql(4)
     })
 });
