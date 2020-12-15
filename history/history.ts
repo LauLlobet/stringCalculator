@@ -17,6 +17,9 @@ describe('calculator should', () => {
         assert.throws(() => calculator("1,2,,1"), Error, "not well separated");
         assert.throws(() => calculator(",1,2,3"), Error, "not well separated")
     });
+    it('ignore jumplines',() => {
+        expect(calculator("1,\n3")).eql(4)
+    })
 });
 
 //-------- IMPLEMENTATION --------
