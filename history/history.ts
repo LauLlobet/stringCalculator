@@ -28,7 +28,7 @@ describe('calculator should', () => {
         assert.throws(()=> calculator("//d\n1d2dd3"))
     })
     it('reject negatives', () => {
-        assert.throws(()=> calculator("1,2,-3,2,1"), Error, "negatives found -3")
+        assert.throws(()=> calculator("1,2,-3,2,1"), Error, "negatives -3 found")
     })
 });
 
@@ -49,7 +49,8 @@ function separateWithCommas(str: string): string {
 export function calculator(string : string): number {
     const commaSeparatedString = separateWithCommas(string)
     if(commaSeparatedString.includes("-")){
-        throw new Error("negatives found")
+        const negative = "-" + string.split("-")[1][0]
+        throw new Error("negatives "+ negative + " found")
     }
     if(isInvalidlySeparated(commaSeparatedString)){ 
         throw new Error('not well separated');
