@@ -14,5 +14,6 @@ describe('calculator should', () => {
     });
     it('shall not accept empty elements', () => {
         assert.throws(() => calculator("1,"), Error, "missing number or extra separator");
+        assert.throws(() => calculator("1,2,,1"), Error, "missing number or extra separator");
     });
 });

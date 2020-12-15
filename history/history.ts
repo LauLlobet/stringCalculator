@@ -14,13 +14,14 @@ describe('calculator should', () => {
     });
     it('shall not accept empty elements', () => {
         assert.throws(() => calculator("1,"), Error, "missing number or extra separator");
+        assert.throws(() => calculator("1,2,,1"), Error, "missing number or extra separator");
     });
 });
 
 //-------- IMPLEMENTATION --------
 
 export function calculator(str : string): number {
-    if(str.endsWith(',')){
+    if(str.endsWith(',') || str.includes(",,")){
         throw new Error('missing number or extra separator');
     }
     return str

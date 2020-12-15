@@ -1,5 +1,5 @@
 export function calculator(str : string): number {
-    if(str.endsWith(',')){
+    if(str.endsWith(',') || str.includes(",,")){
         throw new Error('missing number or extra separator');
     }
     return str
