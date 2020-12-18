@@ -1,5 +1,6 @@
 export function calculator(string : string): number {
-    const commaSeparatedString = turnCustomSeparatorsIntoCommaSeparators(string)
+    const commaSeparatedStringTemp = turnCustomSeparatorsIntoCommaSeparators(string)
+    const commaSeparatedString = turnJumplinesIntoCommaSeparators(commaSeparatedStringTemp)
     throwIfIsInvalidlySeparated(commaSeparatedString)
     throwIfContainingNegativesNumbers(commaSeparatedString)  
     return commaSeparatedString
@@ -23,6 +24,11 @@ function throwIfContainingNegativesNumbers(commaSeparatedString: string) {
     const negative = stringWithoutNonNegatives.split("-").reduce((accum, current)=> accum + " -" + current.split(",")[0], "")
     throw new Error("negatives"+ negative + " found")
 }
+
+function turnJumplinesIntoCommaSeparators(input: string){
+    return input.replace(new RegExp("\n",'g'),',')
+}
+
 
 function throwIfIsInvalidlySeparated(commaSeparatedString: string) {
     if(commaSeparatedString.endsWith(',') || commaSeparatedString.includes(",,") || commaSeparatedString.startsWith(",")){ 
