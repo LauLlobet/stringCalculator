@@ -1,4 +1,3 @@
-import { calculator } from './index';
 import { expect , assert} from 'chai';
 
 describe('calculator should', () => {
@@ -24,3 +23,15 @@ describe('calculator should', () => {
         expect(calculator("//d\n1d2d1")).eql(4)
     })
 });
+
+function isInvalidlySeparated(str: string): boolean {
+    return str.endsWith(',') || str.includes(",,") || str.startsWith(",")
+}
+export function calculator(str : string): number {
+    if(isInvalidlySeparated(str)){ 
+         throw new Error('not well separated');
+    }
+    return str
+    .split(',')
+    .reduce((accum,current) => accum + +current, 0)
+}
