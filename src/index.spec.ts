@@ -17,13 +17,17 @@ describe('calculator should', () => {
         assert.throws(() => calculator("1,2,,1"), Error, "not well separated");
         assert.throws(() => calculator(",1,2,3"), Error, "not well separated")
     });
-    it('ignore jumplines',() => {
+    it('handle jumplines as commas',() => {
         expect(calculator("1,2\n3")).eql(6)
     })
     it('accept changing the delimiter character',() => {
         expect(calculator("//d\n1d2d1")).eql(4)
         expect(calculator("//q\n1q2q1")).eql(4)
     })
+    it('accept changing the delimiter character even with jumplines as separators',() => {
+        expect(calculator("//q\n1q2\n1")).eql(4)
+    })
+
     it('reject bad non comma separators', () => {
         assert.throws(()=> calculator("//d\n1d2dd3"))
     })
